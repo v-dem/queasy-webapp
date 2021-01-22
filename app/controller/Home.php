@@ -2,14 +2,13 @@
 
 namespace app\controller;
 
-use queasy\http\ServerRequest;
 use queasy\framework\Controller;
 
 class Home extends Controller
 {
-    public function get(ServerRequest $request)
+    public function get()
     {
-        $this->app->logger->debug('Home::get() called.');
+        $this->app->logger->debug('Home::get() called. Request: ' . print_r($this->request, true));
 
         $messages = $this->app->db->messages->getNewest();
 

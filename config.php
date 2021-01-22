@@ -5,10 +5,7 @@ return array(
         'class' => 'app\App',
         'construct' => array(
             array(
-                'value' => array(
-                    'requestClass' => 'queasy\http\ServerRequest',
-                    'responseClass' => 'queasy\http\Response'
-                )
+                'value' => new queasy\config\Config(QUEASY_ROOT_PATH . 'config/app.php')
             ),
             array(
                 'service' => 'this'
@@ -19,12 +16,7 @@ return array(
         'class' => 'queasy\framework\RegexRouter',
         'construct' => array(
             array(
-                'value' => array(
-                    '#/profile/([0-9]+)#' => 'app\controller\Profile',
-                    '#/post#' => 'app\controller\Message',
-                    '#/list#' => 'app\controller\Message',
-                    '#/#' => 'app\controller\Home'
-                )
+                'value' => new queasy\config\Config(QUEASY_ROOT_PATH . 'config/router.php')
             )
         ),
         'init' => array(
@@ -39,16 +31,7 @@ return array(
         'class' => 'queasy\db\Db',
         'construct' => array(
             array(
-                'value' => array(
-                    'connection' => array(
-                        'driver' => 'mysql',
-                        'host' => 'localhost',
-                        'name' => 'test',
-                        'user' => 'vitaly',
-                        'password' => 'fr5z6x1'
-                    ),
-                    'fetchMode' => PDO::FETCH_ASSOC
-                )
+                'value' => new queasy\config\Config(QUEASY_ROOT_PATH . 'config/db.php')
             )
         ),
         'init' => array(
@@ -63,17 +46,7 @@ return array(
         'class' => 'queasy\log\Logger',
         'construct' => array(
             array(
-                'value' => array(
-                    array(
-                        'class' => queasy\log\FileSystemLogger::class,
-                        'path' => 'debug.full.log',
-                        'minLevel' => Psr\Log\LogLevel::WARNING
-                    ),
-                    array(
-                        'class' => queasy\log\ConsoleLogger::class,
-                        'minLevel' => Psr\Log\LogLevel::DEBUG
-                    )
-                )
+                'value' => new queasy\config\Config(QUEASY_ROOT_PATH . 'config/logger.php')
             )
         )
     )
