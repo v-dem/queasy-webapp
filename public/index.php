@@ -2,12 +2,16 @@
 
 define('QUEASY_START_TIME', microtime(true));
 
-define('QUEASY_PUBLIC_PATH', __DIR__);
-define('QUEASY_ROOT_PATH', __DIR__ . '/../');
+define('QUEASY_PUBLIC_PATH', __DIR__ . (DIRECTORY_SEPARATOR === __DIR__[strlen(__DIR__) - 1])? '': DIRECTORY_SEPARATOR);
+define('QUEASY_ROOT_PATH', QUEASY_PUBLIC_PATH . '..' . DIRECTORY_SEPARATOR);
+define('QUEASY_CONFIG_PATH', QUEASY_ROOT_PATH . 'config.php');
 
-require_once '../vendor/autoload.php';
+require_once sprintf('..%1$svendor%1$sautoload.php', DIRECTORY_SEPARATOR);
 
-$config = new queasy\config\Config(QUEASY_ROOT_PATH . '/config.php');
+$config = new queasy\config\Config(QUEASY_CONFIG_PATH);
 
-require_once '../vendor/v-dem/queasy-framework/src/bootstrap.php';
+$serviceContainer = new queasy\framework\container\ServiceContainer($config);
+$serviceContainer->get('app')->run();
+
+$serviceContainer->get('logger')->debug('Execution time: ' . (microtime(true) - QUEASY_START_TIME));
 
