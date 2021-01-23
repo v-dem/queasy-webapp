@@ -5,7 +5,7 @@ return array(
         'class' => 'app\App',
         'construct' => array(
             array(
-                'value' => new queasy\config\Config(QUEASY_ROOT_PATH . 'config/app.php')
+                'value' => new queasy\config\Config(QUEASY_ROOT_PATH . 'config' . DIRECTORY_SEPARATOR . 'app.php')
             ),
             array(
                 'service' => 'this'
@@ -16,7 +16,7 @@ return array(
         'class' => 'queasy\framework\RegexRouter',
         'construct' => array(
             array(
-                'value' => new queasy\config\Config(QUEASY_ROOT_PATH . 'config/router.php')
+                'value' => new queasy\config\Config(QUEASY_ROOT_PATH . 'config' . DIRECTORY_SEPARATOR . 'router.php')
             )
         ),
         'init' => array(
@@ -31,7 +31,7 @@ return array(
         'class' => 'queasy\db\Db',
         'construct' => array(
             array(
-                'value' => new queasy\config\Config(QUEASY_ROOT_PATH . 'config/db.php')
+                'value' => new queasy\config\Config(QUEASY_ROOT_PATH . 'config' . DIRECTORY_SEPARATOR . 'db.php')
             )
         ),
         'init' => array(
@@ -46,7 +46,7 @@ return array(
         'class' => 'queasy\log\Logger',
         'construct' => array(
             array(
-                'value' => new queasy\config\Config(QUEASY_ROOT_PATH . 'config/logger.php')
+                'value' => new queasy\config\Config(QUEASY_ROOT_PATH . 'config' . DIRECTORY_SEPARATOR . 'logger.php')
             )
         )
     )
