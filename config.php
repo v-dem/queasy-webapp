@@ -1,29 +1,35 @@
 <?php
 
+define('CONFIG_PATH_PREFIX', QUEASY_ROOT_PATH . 'config' . DIRECTORY_SEPARATOR);
+
 return array(
     'app' => array(
         'class' => 'app\App',
         'construct' => array(
             array(
-                'value' => new queasy\config\Config(QUEASY_ROOT_PATH . 'config' . DIRECTORY_SEPARATOR . 'app.php')
+                'value' => new queasy\config\Config(CONFIG_PATH_PREFIX . 'app.php')
             ),
             array(
                 'service' => 'this'
             )
         )
     ),
+    'request' => array(
+        'class' => 'queasy\http\ServerRequest'
+    ),
+    'response' => array(
+        'class' => 'queasy\http\Response'
+    ),
     'router' => array(
         'class' => 'queasy\framework\RegexRouter',
         'construct' => array(
             array(
-                'value' => new queasy\config\Config(QUEASY_ROOT_PATH . 'config' . DIRECTORY_SEPARATOR . 'router.php')
+                'value' => new queasy\config\Config(CONFIG_PATH_PREFIX . 'router.php')
             )
         ),
-        'init' => array(
-            'setLogger' => array(
-                array(
-                    'service' => 'logger'
-                )
+        'setLogger' => array(
+            array(
+                'service' => 'logger'
             )
         )
     ),
@@ -31,14 +37,12 @@ return array(
         'class' => 'queasy\db\Db',
         'construct' => array(
             array(
-                'value' => new queasy\config\Config(QUEASY_ROOT_PATH . 'config' . DIRECTORY_SEPARATOR . 'db.php')
+                'value' => new queasy\config\Config(CONFIG_PATH_PREFIX . 'db.php')
             )
         ),
-        'init' => array(
-            'setLogger' => array(
-                array(
-                    'service' => 'logger'
-                )
+        'setLogger' => array(
+            array(
+                'service' => 'logger'
             )
         )
     ),
@@ -46,7 +50,7 @@ return array(
         'class' => 'queasy\log\Logger',
         'construct' => array(
             array(
-                'value' => new queasy\config\Config(QUEASY_ROOT_PATH . 'config' . DIRECTORY_SEPARATOR . 'logger.php')
+                'value' => new queasy\config\Config(CONFIG_PATH_PREFIX . 'logger.php')
             )
         )
     )

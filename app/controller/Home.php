@@ -10,9 +10,9 @@ class Home extends Controller
     {
         $this->app->logger->debug('Home::get() called. Request: ' . print_r($this->request, true));
 
-        $messages = $this->app->db->messages->getNewest();
+        // $messages = $this->app->db->messages->getNewest();
 
-        return $this->render('views/home.php', $messages);
+        return 'Hello, World!!!'; // $this->render('views/home.php', $messages);
     }
 }
 
