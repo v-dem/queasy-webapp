@@ -1,6 +1,6 @@
 <?php
 
-return array(
+ return array(
     'app' => array(
         'class' => 'app\App',
         'construct' => array(
