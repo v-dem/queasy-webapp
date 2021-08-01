@@ -1,9 +1,10 @@
 <?php
 
 return array(
-    '~index\.php/profile/([0-9]+)~' => 'app\controller\Profile',
-    '~index\.php/post~' => 'app\controller\Message',
-    '~index\.php/list~' => 'app\controller\Message',
-    '~index\.php/?~' => 'app\controller\Home'
+    '#/profile/([0-9]+)#' => 'app\controller\Profile',
+    '#/post#' => 'app\controller\Message',
+    '#sign-in/(.+)#' => 'app\controller\SignIn',
+    '#sign-in#' => 'app\controller\SignIn',
+    '#/#' => 'app\controller\Home'
 );
 

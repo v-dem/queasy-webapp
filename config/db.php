@@ -2,19 +2,8 @@
 
 return array(
     'connection' => array(
-        'driver' => 'mysql',
-        'host' => 'localhost',
-        'name' => 'test',
-        'password' => 'fr5z6x1'
+        'path' => QUEASY_ROOT_PATH . 'database/database.sqlite'
     ),
-    'fetchMode' => PDO::FETCH_ASSOC,
-    'queries' => array(
-        'getPostsOrdered' => array(
-            'sql' => '
-                SELECT  *
-                FROM    `posts`
-                ORDER   BY `publish_date`'
-        )
-    )
+    'fetchMode' => PDO::FETCH_ASSOC
 );
 

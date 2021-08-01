@@ -1,35 +1,22 @@
 <?php
 
-define('CONFIG_PATH_PREFIX', QUEASY_ROOT_PATH . 'config' . DIRECTORY_SEPARATOR);
-
 return array(
     'app' => array(
         'class' => 'app\App',
         'construct' => array(
             array(
-                'value' => new queasy\config\Config(CONFIG_PATH_PREFIX . 'app.php')
+                'value' => new queasy\config\Config(QUEASY_ROOT_PATH . 'config' . DIRECTORY_SEPARATOR . 'app.php')
             ),
             array(
                 'service' => 'this'
             )
         )
     ),
-    'request' => array(
-        'class' => 'queasy\http\ServerRequest'
-    ),
-    'response' => array(
-        'class' => 'queasy\http\Response'
-    ),
     'router' => array(
         'class' => 'queasy\framework\RegexRouter',
         'construct' => array(
             array(
-                'value' => new queasy\config\Config(CONFIG_PATH_PREFIX . 'router.php')
-            )
-        ),
-        'setLogger' => array(
-            array(
-                'service' => 'logger'
+                'value' => new queasy\config\Config(QUEASY_ROOT_PATH . 'config' . DIRECTORY_SEPARATOR . 'router.php')
             )
         )
     ),
@@ -37,7 +24,7 @@ return array(
         'class' => 'queasy\db\Db',
         'construct' => array(
             array(
-                'value' => new queasy\config\Config(CONFIG_PATH_PREFIX . 'db.php')
+                'value' => new queasy\config\Config(QUEASY_ROOT_PATH . 'config' . DIRECTORY_SEPARATOR . 'db.php')
             )
         ),
         'setLogger' => array(
@@ -50,7 +37,21 @@ return array(
         'class' => 'queasy\log\Logger',
         'construct' => array(
             array(
-                'value' => new queasy\config\Config(CONFIG_PATH_PREFIX . 'logger.php')
+                'value' => new queasy\config\Config(QUEASY_ROOT_PATH . 'config' . DIRECTORY_SEPARATOR . 'logger.php')
+            )
+        )
+    ),
+    'request' => array(
+        'class' => 'queasy\http\ServerRequest'
+    ),
+    'response' => array(
+        'class' => 'queasy\http\Response'
+    ),
+    'validator' => array(
+        'class' => 'queasy\framework\Validator',
+        'construct' => array(
+            array(
+                'value' => new queasy\config\Config(QUEASY_ROOT_PATH . 'config' . DIRECTORY_SEPARATOR . 'validator.php')
             )
         )
     )

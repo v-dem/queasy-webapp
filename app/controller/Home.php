@@ -2,17 +2,15 @@
 
 namespace app\controller;
 
-use queasy\framework\Controller;
+use app\Controller;
 
 class Home extends Controller
 {
     public function get()
     {
-        $this->app->logger->debug('Home::get() called. Request: ' . print_r($this->request, true));
+        $this->app->logger->debug(print_r($this->app->request, true));
 
-        // $messages = $this->app->db->messages->getNewest();
-
-        return 'Hello, World!!!'; // $this->render('views/home.php', $messages);
+        return $this->view('home.php');
     }
 }
 
