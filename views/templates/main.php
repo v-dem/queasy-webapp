@@ -9,7 +9,9 @@
 
         <link rel="stylesheet" href="css/bootstrap.min.css" />
         <link rel="stylesheet" href="css/bootstrap-icons.css" />
+
         <?php if (function_exists('renderCss')) renderCss() ?>
+
         <style>
             body > nav {
                 margin-bottom: 15px;

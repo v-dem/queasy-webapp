@@ -42,5 +42,5 @@ function renderMain(array $__data)
 <?php
 }
 
-include 'template.php';
+include 'templates/main.php';
 
