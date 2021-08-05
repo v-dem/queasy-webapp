@@ -59,7 +59,9 @@
             </div>
         </nav>
 
-        <?php if (function_exists('renderMain')) renderMain($__data) ?>
+        <div class="container">
+            <?php if (function_exists('renderMain')) renderMain($__data) ?>
+        </div>
 
         <footer>
             <div class="text-center">
