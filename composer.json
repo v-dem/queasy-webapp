@@ -1,9 +1,9 @@
 {
     "name": "v-dem/queasy-webapp",
-    "description": "Web application template, part of Queasy PHP framework",
+    "description": "Web application sample, part of QuEasy PHP framework",
     "homepage": "https://github.com/v-dem/queasy-webapp/",
     "keywords": ["php", "framework", "queasy", "php framework"],
-    "license": "LGPL-3.0-only",
+    "license": "Unlicense",
     "version": "1.0.0",
     "minimum-stability": "dev",
     "authors": [
