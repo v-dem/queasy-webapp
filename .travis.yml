@@ -1,0 +1,12 @@
+language: php
+php:
+  - 7.2
+
+before_script:
+    - composer install
+    - cp tests/resources/test.sqlite tests/resources/test.sqlite.temp
+
+script: phpunit
+
+after_success:
+    - bash <(curl -s https://codecov.io/bash)
