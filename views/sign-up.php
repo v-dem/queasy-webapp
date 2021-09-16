@@ -7,7 +7,7 @@ function renderForm(array $__data)
     <form method="post">
         <div class="card">
             <div class="card-header">
-                Login
+                Registration
             </div>
 
             <div class="card-body">
@@ -27,13 +27,18 @@ function renderForm(array $__data)
                 </div>
 
                 <div class="mb-3">
-                    <label for="password" class="form-label">Password</label>
+                    <label for="password" class="form-label">Password:</label>
                     <input type="password" class="form-control" id="password" name="password" />
+                </div>
+
+                <div class="mb-3">
+                    <label for="passwordConfirmation" class="form-label">Confirm Password:</label>
+                    <input type="password" class="form-control" id="passwordConfirmation" name="passwordConfirmation" />
                 </div>
             </div>
 
             <div class="card-footer text-end">
-                <button type="submit" class="btn btn-primary">Sign In</button>
+                <button type="submit" class="btn btn-primary">Sign Up</button>
             </div>
         </div>
     </form>

@@ -17,9 +17,9 @@ class SignUp extends Controller
 
     public function post()
     {
-        $this->app->redirect();
-        /*
         if (empty($this->app->user)) {
+            $this->app->redirect();
+            /*
             $errors = [];
             $user = $this->app->db->users->name[$this->post['name']];
             if (null == $user) {
@@ -38,10 +38,10 @@ class SignUp extends Controller
             } else {
                 $this->app->redirect();
             }
+            */
         } else {
-            $this->app->redirect();
+            $this->app->redirect('index.php');
         }
-        */
     }
 }
 
