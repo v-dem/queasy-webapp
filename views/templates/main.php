@@ -26,7 +26,7 @@
     <body>
         <nav class="navbar navbar-expand-lg">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#"><span class="bi-chat-left-text-fill"></span> QuEasy</a>
+                <a class="navbar-brand" href="index.php"><span class="bi-chat-left-text-fill"></span> QuEasy</a>
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>

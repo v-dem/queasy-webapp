@@ -16,7 +16,7 @@ return array(
         'class' => 'queasy\framework\RegexRouter',
         'construct' => array(
             array(
-                'value' => new queasy\config\Config(QUEASY_ROOT_PATH . 'config' . DIRECTORY_SEPARATOR . 'router.php')
+                'value' => new queasy\config\Config(QUEASY_ROOT_PATH . 'config' . DIRECTORY_SEPARATOR . 'routes.php')
             )
         )
     ),
