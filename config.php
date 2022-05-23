@@ -43,15 +43,6 @@ return array(
 
     'response' => array(
         'class' => 'queasy\http\Response'
-    ),
-
-    'validator' => array(
-        'class' => 'queasy\framework\Validator',
-        'construct' => array(
-            array(
-                'value' => new queasy\config\Config(QUEASY_ROOT_PATH . 'config' . DIRECTORY_SEPARATOR . 'validator.php')
-            )
-        )
     )
 );
 
