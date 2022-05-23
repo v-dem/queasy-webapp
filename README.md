@@ -10,8 +10,12 @@ QuEasy PHP Framework sample application.
 ### Requirements
 
 *   PHP version 5.3 or higher
+*   SQLite
 
 ### Installation
 
     composer create-project --stability dev v-dem/queasy-webapp
+
+It will download and install project files, create SQLite database and make `logs` and `database` folders writable (777).
+That's all. A good idea is to configure your web server to access web app at its `public` folder as website root, but it will work in any case.
 
