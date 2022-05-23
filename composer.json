@@ -41,8 +41,8 @@
             "phpunit --coverage-clover coverage.xml"
         ],
         "post-create-project-cmd": [
-            "chmod -R 777 database",
-            "chmod -R 777 logs",
+            "chmod -R 666 database",
+            "chmod -R 666 logs",
             "php database/create.php"
         ]
     }
