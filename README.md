@@ -16,7 +16,7 @@ QuEasy PHP Framework sample application.
 
     composer create-project --stability dev v-dem/queasy-webapp
 
-It will download and install project files, create SQLite database and make `logs` and `database` folders writable (777).
+It will download and install project files, create SQLite database and make `logs` and `database` folders writable (666).
 That's all. A good idea is to configure your web server to access web app at its `public` folder as website root, but it will work in any case.
 
 > There is already a user "admin"/"gfhjkm" created, so you already can sign in.
