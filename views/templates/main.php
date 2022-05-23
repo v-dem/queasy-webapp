@@ -10,8 +10,6 @@
         <link rel="stylesheet" href="css/bootstrap.min.css" />
         <link rel="stylesheet" href="css/bootstrap-icons.css" />
 
-        <?php if (function_exists('renderCss')) renderCss() ?>
-
         <style>
             body > nav {
                 margin-bottom: 15px;
@@ -21,6 +19,8 @@
                 margin-top: 15px;
             }
         </style>
+
+        <?php if (function_exists('renderCss')) renderCss($__data) ?>
     </head>
 
     <body>
@@ -70,7 +70,8 @@
         </footer>
 
         <script type="application/javascript" src="js/bootstrap.bundle.min.js"></script>
-        <?php if (function_exists('renderJs')) renderJs() ?>
+
+        <?php if (function_exists('renderJs')) renderJs($__data) ?>
     </body>
 </html>
 
