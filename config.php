@@ -1,25 +1,19 @@
 <?php
 
 return array(
-    'app' => array(
-        'class' => 'app\App',
-        'construct' => array(
-            array(
-                'value' => new queasy\config\Config(QUEASY_ROOT_PATH . 'config' . DIRECTORY_SEPARATOR . 'app.php')
-            ),
-            array(
-                'service' => 'this'
-            )
-        )
-    ),
+    'viewsPath' => QUEASY_ROOT_PATH . 'views/',
+
+    // Services
+
     'router' => array(
         'class' => 'queasy\framework\RegexRouter',
         'construct' => array(
             array(
-                'value' => new queasy\config\Config(QUEASY_ROOT_PATH . 'config' . DIRECTORY_SEPARATOR . 'router.php')
+                'value' => new queasy\config\Config(QUEASY_ROOT_PATH . 'config' . DIRECTORY_SEPARATOR . 'routes.php')
             )
         )
     ),
+
     'db' => array(
         'class' => 'queasy\db\Db',
         'construct' => array(
@@ -33,6 +27,7 @@ return array(
             )
         )
     ),
+
     'logger' => array(
         'class' => 'queasy\log\Logger',
         'construct' => array(
@@ -41,12 +36,15 @@ return array(
             )
         )
     ),
+
     'request' => array(
         'class' => 'queasy\http\ServerRequest'
     ),
+
     'response' => array(
         'class' => 'queasy\http\Response'
     ),
+
     'validator' => array(
         'class' => 'queasy\framework\Validator',
         'construct' => array(

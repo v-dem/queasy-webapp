@@ -10,8 +10,8 @@ require_once sprintf('..%1$svendor%1$sautoload.php', DIRECTORY_SEPARATOR);
 
 $config = new queasy\config\Config(QUEASY_CONFIG_PATH);
 
-$serviceContainer = new queasy\framework\container\ServiceContainer($config);
-echo $serviceContainer->get('app')->run();
+$app = new app\App($config);
+echo $app->run();
 
-$serviceContainer->get('logger')->debug('Execution time: ' . (microtime(true) - QUEASY_START_TIME));
+$app->logger->debug('Execution time: ' . (microtime(true) - QUEASY_START_TIME));
 
