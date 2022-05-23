@@ -39,6 +39,9 @@
     "scripts": {
         "test": [
             "phpunit --coverage-clover coverage.xml"
+        ],
+        "post-create-project-cmd": [
+            "php database/create.php"
         ]
     }
 }
