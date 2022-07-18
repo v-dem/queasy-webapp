@@ -11,7 +11,7 @@ class SignUp extends Controller
         if (empty($this->app->user)) {
             return $this->view('sign-up.php');
         } else {
-            $this->app->redirect('index.php');
+            $this->app->redirect();
         }
     }
 
@@ -40,7 +40,7 @@ class SignUp extends Controller
             }
             */
         } else {
-            $this->app->redirect('index.php');
+            $this->app->redirect();
         }
     }
 }

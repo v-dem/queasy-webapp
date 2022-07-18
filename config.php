@@ -1,5 +1,7 @@
 <?php
 
+use queasy\config\Config;
+
 return array(
     'viewsPath' => QUEASY_ROOT_PATH . 'views/',
 
@@ -9,7 +11,7 @@ return array(
         'class' => 'queasy\framework\RegexRouter',
         'construct' => array(
             array(
-                'value' => new queasy\config\Config(QUEASY_ROOT_PATH . 'config' . DIRECTORY_SEPARATOR . 'routes.php')
+                'value' => new Config(QUEASY_ROOT_PATH . 'config/routes.php')
             )
         )
     ),
@@ -18,12 +20,7 @@ return array(
         'class' => 'queasy\db\Db',
         'construct' => array(
             array(
-                'value' => new queasy\config\Config(QUEASY_ROOT_PATH . 'config' . DIRECTORY_SEPARATOR . 'db.php')
-            )
-        ),
-        'setLogger' => array(
-            array(
-                'service' => 'logger'
+                'value' => new Config(QUEASY_ROOT_PATH . 'config/db.php')
             )
         )
     ),
@@ -32,7 +29,7 @@ return array(
         'class' => 'queasy\log\Logger',
         'construct' => array(
             array(
-                'value' => new queasy\config\Config(QUEASY_ROOT_PATH . 'config' . DIRECTORY_SEPARATOR . 'logger.php')
+                'value' => new Config(QUEASY_ROOT_PATH . 'config/logger.php')
             )
         )
     ),
@@ -45,12 +42,15 @@ return array(
         'class' => 'queasy\http\Response'
     ),
 
-    'validator' => array(
-        'class' => 'queasy\framework\Validator',
+    'middleware' => array(
+        'class' => 'queasy\framework\Middleware',
         'construct' => array(
             array(
-                'value' => new queasy\config\Config(QUEASY_ROOT_PATH . 'config' . DIRECTORY_SEPARATOR . 'validator.php')
-            )
+                'value' => new Config(QUEASY_ROOT_PATH . 'config/middleware.php')
+            ),
+            array(
+                'service' => 'this'
+            ),
         )
     )
 );
