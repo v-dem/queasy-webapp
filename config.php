@@ -1,6 +1,9 @@
 <?php
 
 return array(
+
+    // Application
+
     'viewsPath' => QUEASY_ROOT_PATH . 'views/',
 
     // Services
