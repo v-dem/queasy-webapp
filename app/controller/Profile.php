@@ -6,13 +6,13 @@ use app\Controller;
 
 class Profile extends Controller
 {
-    public function get($action = null)
+    public function get()
     {
-        if (empty($this->app->user)) {
-            $this->app->redirect('index.php/sign-in');
-        } else {
+        if (!empty($this->app->user)) {
             return $this->view('profile.php');
         }
+
+        $this->app->redirect('index.php/sign-in');
     }
 }
 
