@@ -1,8 +1,8 @@
 <?php
 
 return array(
-    'app\middleware\AuthMiddleware' => array(
-        'app\controller\Profile'
+    'app\controller\Profile' => array(
+        'app\middleware\Auth'
     )
 );
 

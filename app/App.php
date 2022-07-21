@@ -8,8 +8,10 @@ class App extends BaseApp
 {
     public $user;
 
-    public function init()
+    public function __construct($config)
     {
+        parent::__construct($config);
+
         session_start();
 
         if (isset($_SESSION['user'])) {

@@ -2,7 +2,11 @@
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
-$db = new queasy\db\Db(['connection' => ['path' => __DIR__ . '/database.sqlite']]);
+$db = new queasy\db\Db(array(
+    'connection' => array(
+        'path' => __DIR__ . '/database.sqlite'
+    )
+));
 
 $db('
     CREATE  TABLE `users` (
@@ -28,8 +32,8 @@ $db('
 $db('
     INSERT  INTO `users` (`id`, `role_id`, `name`, `password_hash`)
     VALUES  (1, 2, \'admin\', :password_hash)',
-    [
+    array(
         'password_hash' => password_hash('gfhjkm', PASSWORD_DEFAULT)
-    ]
+    )
 );
 

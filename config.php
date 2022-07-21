@@ -45,8 +45,12 @@ return array(
         'class' => 'queasy\http\Response'
     ),
 
+    'stream' => array(
+        'class' => 'queasy\http\Stream'
+    ),
+
     'middleware' => array(
-        'class' => 'queasy\framework\Middleware',
+        'class' => 'queasy\framework\MiddlewareHandler',
         'construct' => array(
             array(
                 'value' => new Config(QUEASY_ROOT_PATH . 'config/middleware.php')

@@ -44,7 +44,8 @@
         "post-create-project-cmd": [
             "chmod -R 666 database",
             "chmod -R 666 logs",
-            "php database/create.php"
+            "php database/create.php",
+            "chmod 666 database/database.sqlite"
         ]
     }
 }
