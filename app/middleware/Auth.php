@@ -12,11 +12,11 @@ class Auth implements MiddlewareInterface
 {
     public function handle(ServerRequestInterface $request, Closure $next)
     {
-        if (!$this->app->user) {
-            $this->app->redirect('index.php/sign-in');
+        if ($this->app->user) {
+            return $next($request);
         }
 
-        return $next($request);
+        $this->app->redirect('index.php/sign-in');
     }
 }
 
