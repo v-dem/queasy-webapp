@@ -10,55 +10,32 @@ return array(
 
     // Services
 
-    'router' => array(
-        'class' => 'queasy\framework\RegexRouter',
-        'construct' => array(
-            array(
-                'value' => new Config(QUEASY_ROOT_PATH . 'config/routes.php')
-            )
-        )
-    ),
+    'router' => static function($c) {
+        return new queasy\framework\RegexRouter(new Config(QUEASY_ROOT_PATH . 'config/routes.php'));
+    },
 
-    'db' => array(
-        'class' => 'queasy\db\Db',
-        'construct' => array(
-            array(
-                'value' => new Config(QUEASY_ROOT_PATH . 'config/db.php')
-            )
-        )
-    ),
+    'db' => static function($c) {
+        return new queasy\db\Db(new Config(QUEASY_ROOT_PATH . 'config/db.php'));
+    },
 
-    'logger' => array(
-        'class' => 'queasy\log\Logger',
-        'construct' => array(
-            array(
-                'value' => new Config(QUEASY_ROOT_PATH . 'config/logger.php')
-            )
-        )
-    ),
+    'logger' => static function($c) {
+        return new queasy\log\Logger(new Config(QUEASY_ROOT_PATH . 'config/logger.php'));
+    },
 
-    'request' => array(
-        'class' => 'queasy\http\ServerRequest'
-    ),
+    'request' => static function($c) {
+        return new queasy\http\ServerRequest();
+    },
 
-    'response' => array(
-        'class' => 'queasy\http\Response'
-    ),
+    'response' => static function($c) {
+        return new queasy\http\Response();
+    },
 
-    'stream' => array(
-        'class' => 'queasy\http\Stream'
-    ),
+    'stream' => static function($c) {
+        return new queasy\http\Stream();
+    },
 
-    'middleware' => array(
-        'class' => 'queasy\framework\MiddlewareHandler',
-        'construct' => array(
-            array(
-                'value' => new Config(QUEASY_ROOT_PATH . 'config/middleware.php')
-            ),
-            array(
-                'service' => 'this'
-            ),
-        )
-    )
+    'middleware' => static function($c) {
+        return new queasy\framework\MiddlewareHandler(new Config(QUEASY_ROOT_PATH . 'config/middleware.php'), $c);
+    }
 );
 

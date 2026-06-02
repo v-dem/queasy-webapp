@@ -33,12 +33,12 @@ class SignIn extends Controller
             }
 
             if (count($errors)) {
-                return $this->view('sign-in.php', array(
+                return $this->view('sign-in.php', [
                     'errors' => $errors,
                     'name' => $this->post['name']
-                ));
+                ]);
             } else {
-                $this->app->redirect();
+                $this->app->redirect('index.php/profile');
             }
         } else {
             $this->app->redirect();

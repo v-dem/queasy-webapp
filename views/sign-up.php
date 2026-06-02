@@ -15,7 +15,7 @@ function renderForm(array $__data)
                     <div class="mb-3">
                         <?php foreach ($errors as $error) { ?>
                             <div class="alert alert-warning" role="alert">
-                                <?php echo htmlspecialchars($error) ?>
+                                <?= htmlspecialchars($error) ?>
                             </div>
                         <?php } ?>
                     </div>
@@ -23,7 +23,7 @@ function renderForm(array $__data)
 
                 <div class="mb-3">
                     <label for="name" class="form-label">User Name:</label>
-                    <input type="text" class="form-control" id="name" name="name" <?php echo isset($name)? 'value="' . htmlspecialchars($name) . '"': '' ?> />
+                    <input type="text" class="form-control" id="name" name="name" <?= isset($name)? 'value="' . htmlspecialchars($name) . '"': '' ?> />
                 </div>
 
                 <div class="mb-3">

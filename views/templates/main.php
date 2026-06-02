@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8" />
 
-        <base href="<?php echo preg_replace('/index\.php.*/', '', $this->app->request->getRequestTarget()) ?>" />
+        <base href="<?= preg_replace('/index\.php.*/', '', $this->app->request->getRequestTarget()) ?>" />
 
         <title>QuEasy PHP Framework - Demo Application</title>
 

@@ -1,11 +1,11 @@
 <?php
 
-return array(
-    'connection' => array(
-        'path' => QUEASY_ROOT_PATH . 'database/database.sqlite'
-    ),
-    'options' => array(
+return [
+    'connection' => [
+        'dsn' => 'sqlite:' . QUEASY_ROOT_PATH . 'database/database.sqlite'
+    ],
+    'options' => [
         PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
-    )
-);
+    ]
+];
 

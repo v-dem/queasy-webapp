@@ -19,7 +19,7 @@ function renderForm(array $__data)
     <?php } else { ?>
         <div class="card">
             <div class="card-header">
-                Welcome, <?php echo htmlspecialchars($user['name']) ?>!
+                Welcome, <?= htmlspecialchars($user['name']) ?>!
             </div>
 
             <div class="card-body">

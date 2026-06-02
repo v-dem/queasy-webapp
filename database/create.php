@@ -2,38 +2,37 @@
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
-$db = new queasy\db\Db(array(
-    'connection' => array(
+$db = new queasy\db\Db([
+    'connection' => [
         'path' => __DIR__ . '/database.sqlite'
-    )
-));
+    ]
+]);
 
 $db('
-    CREATE  TABLE `users` (
-            `id`            integer primary key,
-            `role_id`       integer,
-            `name`          text not null unique,
-            `password_hash` text not null
+    CREATE TABLE `users` (
+        `id`            integer primary key,
+        `role_id`       integer,
+        `name`          text not null unique,
+        `password_hash` text not null
     )'
 );
 
 $db('
-    CREATE  TABLE `user_roles` (
-            `id`            integer primary key,
-            `name`          text not null unique
+    CREATE TABLE `user_roles` (
+        `id`            integer primary key,
+        `name`          text not null unique
     )'
 );
 
-$db('
-    INSERT  INTO `user_roles` (`id`, `name`)
-    VALUES  (1, \'User\'),
-            (2, \'Admin\')');
+$db->user_roles[] = [
+    [ 'id' => 1, 'name' => 'User' ],
+    [ 'id' => 2, 'name' => 'Admin' ],
+];
 
-$db('
-    INSERT  INTO `users` (`id`, `role_id`, `name`, `password_hash`)
-    VALUES  (1, 2, \'admin\', :password_hash)',
-    array(
-        'password_hash' => password_hash('gfhjkm', PASSWORD_DEFAULT)
-    )
-);
+$db->users[] = [
+    'id'            => 1,
+    'role_id'       => 2,
+    'name'          => 'admin',
+    'password_hash' => password_hash('gfhjkm', PASSWORD_DEFAULT)
+];
 
