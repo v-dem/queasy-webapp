@@ -3,6 +3,7 @@
 namespace app\controller;
 
 use app\Controller;
+use app\Redirect;
 
 class SignUp extends Controller
 {
@@ -11,14 +12,14 @@ class SignUp extends Controller
         if (empty($this->app->user)) {
             return $this->view('sign-up.php');
         } else {
-            $this->app->redirect();
+            return $this->redirect();
         }
     }
 
     public function post()
     {
         if (empty($this->app->user)) {
-            $this->app->redirect();
+            return $this->redirect();
             /*
             $errors = [];
             $user = $this->app->db->users->name[$this->post['name']];
@@ -40,7 +41,7 @@ class SignUp extends Controller
             }
             */
         } else {
-            $this->app->redirect();
+            return $this->redirect();
         }
     }
 }

@@ -22,16 +22,8 @@ return array(
         return new queasy\log\Logger(new Config(QUEASY_ROOT_PATH . 'config/logger.php'));
     },
 
-    'request' => static function($c) {
-        return new queasy\http\ServerRequest();
-    },
-
-    'response' => static function($c) {
-        return new queasy\http\Response();
-    },
-
-    'stream' => static function($c) {
-        return new queasy\http\Stream();
+    'http' => static function($c) {
+        return new queasy\Container\ServiceContainer(new Config(QUEASY_ROOT_PATH . 'config/http.php'));
     },
 
     'middleware' => static function($c) {

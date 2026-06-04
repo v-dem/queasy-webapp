@@ -8,6 +8,8 @@ use Psr\Http\Message\ServerRequestInterface;
 
 use queasy\framework\MiddlewareInterface;
 
+use app\Redirect;
+
 class Auth implements MiddlewareInterface
 {
     public function handle(ServerRequestInterface $request, Closure $next)
@@ -16,7 +18,7 @@ class Auth implements MiddlewareInterface
             return $next($request);
         }
 
-        $this->app->redirect('index.php/sign-in');
+        new Redirect($request, this->app->createResponse(), 'index.php/sign-in');
     }
 }
 

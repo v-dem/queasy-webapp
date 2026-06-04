@@ -12,7 +12,7 @@ class Profile extends Controller
             return $this->view('profile.php');
         }
 
-        $this->app->redirect('index.php/sign-in');
+        return $this->redirect('index.php/sign-in');
     }
 }
 

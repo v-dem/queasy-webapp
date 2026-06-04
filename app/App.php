@@ -28,10 +28,5 @@ class App extends BaseApp
     {
         unset($_SESSION['user']);
     }
-
-    public function redirect($path = '')
-    {
-        header('Location: ' . preg_replace('/index\.php.*/', '', $this->request->getRequestTarget()) . $path);
-    }
 }
 
