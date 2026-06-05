@@ -2,12 +2,7 @@
 
 return [
     'app\controller\Profile' => [
-        'app\middleware\Auth'
+        app\middleware\Auth::class
     ],
-/*
-    'app\controller\Profile' => [
-        'app\middleware\Auth'
-    ]
-*/
 ];
 

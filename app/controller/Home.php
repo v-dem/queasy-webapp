@@ -8,7 +8,9 @@ class Home extends Controller
 {
     public function get()
     {
-        return $this->view('home.php');
+        return $this->view('home.php', [
+            'user' => $this->app->user
+        ]);
     }
 }
 

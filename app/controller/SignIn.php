@@ -15,7 +15,7 @@ class SignIn extends Controller
                 $this->app->logout();
             }
 
-            return $this->redirect();
+            return $this->redirect->path();
         }
     }
 
@@ -38,10 +38,10 @@ class SignIn extends Controller
                     'name' => $this->post['name']
                 ]);
             } else {
-                return $this->redirect('index.php/profile');
+                return $this->redirect->path('index.php/profile');
             }
         } else {
-            return $this->redirect();
+            return $this->redirect->path();
         }
     }
 }

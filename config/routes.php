@@ -1,10 +1,10 @@
 <?php
 
 return [
-    '~/index\.php/profile/?$~'          => 'app\controller\Profile',
-    '~/index\.php/sign-in/?(.*)?$~'     => 'app\controller\SignIn',
-    '~/index\.php/sign-up$~'            => 'app\controller\SignUp',
-    '~/index\.php\/?$~'                 => 'app\controller\Home',
-    '~/\/?$~'                           => 'app\controller\Home'
+    '~/index\.php/profile/?$~'          => app\controller\Profile::class,
+    '~/index\.php/sign-in/?(.*)?$~'     => app\controller\SignIn::class,
+    '~/index\.php/sign-up$~'            => app\controller\SignUp::class,
+    '~/index\.php\/?$~'                 => app\controller\Home::class,
+    '~/\/?$~'                           => app\controller\Home::class
 ];
 

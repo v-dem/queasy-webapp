@@ -14,11 +14,14 @@ class Auth implements MiddlewareInterface
 {
     public function handle(ServerRequestInterface $request, Closure $next)
     {
+        $this->app->logger->debug('auth!');
+
         if ($this->app->user) {
             return $next($request);
         }
 
-        new Redirect($request, this->app->createResponse(), 'index.php/sign-in');
+        return this->app->createResponse()
+            ->withHeader('Location', preg_replace('/index.php.*/', '', $request->getRequestTarget()) . 'index.php/sign-in');
     }
 }
 

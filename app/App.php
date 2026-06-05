@@ -21,7 +21,7 @@ class App extends BaseApp
 
     public function signIn($user)
     {
-        $_SESSION['user'] = $user;
+        $_SESSION['user'] = $this->user = $user;
     }
 
     public function logout()

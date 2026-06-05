@@ -11,8 +11,6 @@ require_once QUEASY_VENDOR_PATH . 'autoload.php';
 $config = new queasy\config\Config(QUEASY_CONFIG_PATH);
 
 $app = new app\App($config);
-$app->logger->debug($_SERVER);
-
 echo $app->handle($app->http->serverRequestFromGlobals);
 
 $app->logger->debug('Execution time: ' . (microtime(true) - QUEASY_START_TIME));
