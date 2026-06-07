@@ -7,22 +7,17 @@ use app\Redirect;
 
 class SignUp extends Controller
 {
+    protected $viewPath = 'sign-up.php';
+
     public function get($action = null)
     {
-        if (empty($this->app->user)) {
-            return $this->view('sign-up.php');
-        } else {
-            return $this->redirect->path();
-        }
+        return $this->view->html();
     }
 
     public function post()
     {
-        if (empty($this->app->user)) {
-            return $this->redirect->path();
-        } else {
-            return $this->redirect->path();
-        }
+        // Not implemented
+        return $this->redirect->path();
     }
 }
 

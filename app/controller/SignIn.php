@@ -4,44 +4,36 @@ namespace app\controller;
 
 use app\Controller;
 
+use app\model\User;
+
 class SignIn extends Controller
 {
+    protected $viewPath = 'sign-in.php';
+
     public function get($action = null)
     {
-        if (empty($this->app->user)) {
-            return $this->view('sign-in.php');
-        } else {
-            if ('logout' === $action) {
-                $this->app->logout();
-            }
-
-            return $this->redirect->path();
-        }
+        return $this->view->html();
     }
 
     public function post()
     {
-        if (empty($this->app->user)) {
-            $errors = [];
-            $user = $this->app->db->users->name[$this->post['name']];
-            if (null == $user) {
-                $errors[] = 'User not found.';
-            } elseif (!password_verify($this->post['password'], $user['password_hash'])) {
-                $errors[] = 'Invalid password. Please try again.';
-            } else {
-                $this->app->signIn($user);
-            }
-
-            if (count($errors)) {
-                return $this->view('sign-in.php', [
-                    'errors' => $errors,
-                    'name' => $this->post['name']
-                ]);
-            } else {
-                return $this->redirect->path('index.php/profile');
-            }
+        $errors = [];
+        $user = $this->app->db->users->name[$this->post['name']];
+        if (null == $user) {
+            $errors[] = 'User not found.';
+        } elseif (!password_verify($this->post['password'], $user['password_hash'])) {
+            $errors[] = 'Invalid password. Please try again.';
         } else {
-            return $this->redirect->path();
+            $this->app->signIn(new User($user));
+        }
+
+        if (count($errors)) {
+            return $this->view->html([
+                'errors' => $errors,
+                'name' => $this->post['name']
+            ]);
+        } else {
+            return $this->redirect->path('index.php/profile');
         }
     }
 }

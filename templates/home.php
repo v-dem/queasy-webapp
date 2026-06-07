@@ -19,7 +19,7 @@ function renderForm(array $__data)
     <?php } else { ?>
         <div class="card">
             <div class="card-header">
-                Welcome, <?= htmlspecialchars($user['name']) ?>!
+                Welcome, <?= htmlspecialchars($user->name) ?>!
             </div>
 
             <div class="card-body">
@@ -32,5 +32,5 @@ function renderForm(array $__data)
 <?php
 }
 
-include 'templates/main-form.php';
+include __DIR__ . '/base/main-form.php';
 

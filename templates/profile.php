@@ -7,7 +7,7 @@ function renderForm(array $__data)
     <form method="post">
         <div class="card">
             <div class="card-header">
-                Registration
+                Profile
             </div>
 
             <div class="card-body">
@@ -23,27 +23,17 @@ function renderForm(array $__data)
 
                 <div class="mb-3">
                     <label for="name" class="form-label">User Name:</label>
-                    <input type="text" class="form-control" id="name" name="name" <?= isset($name)? 'value="' . htmlspecialchars($name) . '"': '' ?> />
-                </div>
-
-                <div class="mb-3">
-                    <label for="password" class="form-label">Password:</label>
-                    <input type="password" class="form-control" id="password" name="password" />
-                </div>
-
-                <div class="mb-3">
-                    <label for="passwordConfirmation" class="form-label">Confirm Password:</label>
-                    <input type="password" class="form-control" id="passwordConfirmation" name="passwordConfirmation" />
+                    <input type="text" class="form-control" id="name" name="name" value="<?= htmlspecialchars(isset($name) ? $name : $user->name) ?>" />
                 </div>
             </div>
 
             <div class="card-footer text-end">
-                <button type="submit" class="btn btn-primary">Sign Up</button>
+                <button type="submit" class="btn btn-primary">Save</button>
             </div>
         </div>
     </form>
 <?php
 }
 
-include 'templates/main-form.php';
+include __DIR__ . '/base/main-form.php';
 

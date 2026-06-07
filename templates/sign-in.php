@@ -40,5 +40,5 @@ function renderForm(array $__data)
 <?php
 }
 
-include 'templates/main-form.php';
+include __DIR__ . '/base/main-form.php';
 

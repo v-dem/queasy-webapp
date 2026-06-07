@@ -53,7 +53,7 @@
                             <a class="card-link" href="index.php/sign-up"><span class="bi-person-plus-fill"></span>&nbsp;Sign Up</a>
                         <?php } else { ?>
                             <a class="card-link" href="index.php/profile"><span class="bi-person-circle"></span>&nbsp;Profile</a>
-                            <a class="card-link" href="index.php/sign-in/logout"><span class="bi-x-circle-fill"></span>&nbsp;Logout</a>
+                            <a class="card-link" href="index.php/?logout"><span class="bi-x-circle-fill"></span>&nbsp;Logout</a>
                         <?php } ?>
                     </span>
                 </div>

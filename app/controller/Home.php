@@ -6,11 +6,17 @@ use app\Controller;
 
 class Home extends Controller
 {
+    protected $viewPath = 'home.php';
+
     public function get()
     {
-        return $this->view('home.php', [
-            'user' => $this->app->user
-        ]);
+        if (isset($this->get['logout'])) {
+            $this->app->logout();
+
+            return $this->redirect->path();
+        }
+
+        return $this->view->html();
     }
 }
 

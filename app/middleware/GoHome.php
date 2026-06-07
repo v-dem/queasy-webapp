@@ -10,7 +10,7 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-class Auth implements MiddlewareInterface
+class GoHome implements MiddlewareInterface
 {
     private $app;
 
@@ -22,11 +22,11 @@ class Auth implements MiddlewareInterface
     public function process(ServerRequestInterface $request, RequestHandlerInterface $next): ResponseInterface
     {
         if ($this->app->user) {
-            return $next->handle($request);
+            return $this->app->http->responseFactory->createResponse()
+                ->withHeader('Location', preg_replace('/index.php.*/', '', $request->getRequestTarget()) . 'index.php');
         }
 
-        return $this->app->http->responseFactory->createResponse()
-            ->withHeader('Location', preg_replace('/index.php.*/', '', $request->getRequestTarget()) . 'index.php/sign-in');
+        return $next->handle($request);
     }
 }
 
