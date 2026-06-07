@@ -21,7 +21,7 @@ class Auth implements MiddlewareInterface
 
     public function process(ServerRequestInterface $request, RequestHandlerInterface $next): ResponseInterface
     {
-        if ($this->app->user) {
+        if ($this->app->user()->isLoggedIn()) {
             return $next->handle($request);
         }
 

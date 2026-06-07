@@ -21,7 +21,7 @@ class GoHome implements MiddlewareInterface
 
     public function process(ServerRequestInterface $request, RequestHandlerInterface $next): ResponseInterface
     {
-        if ($this->app->user) {
+        if ($this->app->user()->isLoggedIn()) {
             return $this->app->http->responseFactory->createResponse()
                 ->withHeader('Location', preg_replace('/index.php.*/', '', $request->getRequestTarget()) . 'index.php');
         }

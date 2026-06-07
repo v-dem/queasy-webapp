@@ -2,11 +2,13 @@
 
 namespace app;
 
+use app\model\User;
+
 use queasy\framework\App as BaseApp;
 
 class App extends BaseApp
 {
-    public $user;
+    private $user;
 
     public function __construct($config)
     {
@@ -14,19 +16,27 @@ class App extends BaseApp
 
         session_start();
 
-        if (isset($_SESSION['user'])) {
-            $this->user = $_SESSION['user'];
-        }
+        $this->user = isset($_SESSION['user'])
+            ? $_SESSION['user']
+            : new User();
+    }
+
+    public function user()
+    {
+        return $this->user;
     }
 
     public function signIn($user)
     {
+        
         $_SESSION['user'] = $this->user = $user;
     }
 
     public function logout()
     {
         unset($_SESSION['user']);
+
+        $this->user = new User();
     }
 }
 

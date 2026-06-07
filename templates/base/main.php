@@ -48,12 +48,12 @@
                     </ul>
 
                     <span class="navbar-text">
-                        <?php if (empty($user)) { ?>
-                            <a class="card-link active" href="index.php/sign-in"><span class="bi-key-fill"></span>&nbsp;Sign In</a>
-                            <a class="card-link" href="index.php/sign-up"><span class="bi-person-plus-fill"></span>&nbsp;Sign Up</a>
-                        <?php } else { ?>
+                        <?php if ($user->isLoggedIn()) { ?>
                             <a class="card-link" href="index.php/profile"><span class="bi-person-circle"></span>&nbsp;Profile</a>
                             <a class="card-link" href="index.php/?logout"><span class="bi-x-circle-fill"></span>&nbsp;Logout</a>
+                        <?php } else { ?>
+                            <a class="card-link active" href="index.php/sign-in"><span class="bi-key-fill"></span>&nbsp;Sign In</a>
+                            <a class="card-link" href="index.php/sign-up"><span class="bi-person-plus-fill"></span>&nbsp;Sign Up</a>
                         <?php } ?>
                     </span>
                 </div>

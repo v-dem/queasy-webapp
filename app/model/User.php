@@ -4,16 +4,35 @@ namespace app\model;
 
 class User
 {
-    public $id;
-    public $role_id;
-    public $name;
-    public $password_hash;
+    private $data;
+    private $isLoggedIn;
+    private $isAdmin;
 
-    public function __construct(array $data)
+    public function __construct(array $data = [], $isLoggedIn = false, $isAdmin = false)
     {
-        foreach ($this as $field => &$value) {
-            $value = $data[$field];
-        }
+        $this->data = $data;
+        $this->isLoggedIn = $isLoggedIn;
+        $this->isAdmin = $isAdmin;
+    }
+
+    public function __get($field)
+    {
+        return $this->data[$field] ?? null;
+    }
+
+    public function __set($field, $value)
+    {
+        $this->data[$field] = $value;
+    }
+
+    public function isLoggedIn()
+    {
+        return $this->isLoggedIn;
+    }
+
+    public function isAdmin()
+    {
+        return $this->isAdmin;
     }
 }
 

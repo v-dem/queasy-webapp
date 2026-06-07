@@ -24,7 +24,7 @@ class SignIn extends Controller
         } elseif (!password_verify($this->post['password'], $user['password_hash'])) {
             $errors[] = 'Invalid password. Please try again.';
         } else {
-            $this->app->signIn(new User($user));
+            $this->app->signIn(new User($user, true));
         }
 
         if (count($errors)) {
