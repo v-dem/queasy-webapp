@@ -34,5 +34,12 @@ class User
     {
         return $this->isAdmin;
     }
+
+    public function logout()
+    {
+        $this->isAdmin = false;
+        $this->isLoggedIn = false;
+        $this->data = [];
+    }
 }
 

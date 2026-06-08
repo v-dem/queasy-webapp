@@ -10,13 +10,13 @@ class View
 
     private $templatePath;
 
-    private $globalData;
+    private $data;
 
-    public function __construct(ResponseInterface $response, $templatePath, $globalData = array())
+    public function __construct(ResponseInterface $response, $templatePath, $data = array())
     {
         $this->response = $response;
         $this->templatePath = $templatePath;
-        $this->globalData = $globalData;
+        $this->data = $data;
     }
 
     protected function render(array $__data = array())
@@ -32,7 +32,7 @@ class View
 
     public function html(array $data = array(), $responseCode = 200)
     {
-        $body = $this->render(array_merge($this->globalData, $data));
+        $body = $this->render(array_merge($this->data, $data));
 
         $this->response->getBody()->write($body);
 

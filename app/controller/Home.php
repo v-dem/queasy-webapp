@@ -12,8 +12,6 @@ class Home extends Controller
     {
         if (isset($this->get['logout'])) {
             $this->app->logout();
-
-            return $this->redirect->path();
         }
 
         return $this->view->html();

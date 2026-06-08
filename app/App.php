@@ -6,9 +6,11 @@ use app\model\User;
 
 use queasy\framework\App as BaseApp;
 
+use InvalidArgumentException;
+
 class App extends BaseApp
 {
-    private $user;
+    protected User $user;
 
     public function __construct($config)
     {
@@ -16,9 +18,13 @@ class App extends BaseApp
 
         session_start();
 
-        $this->user = isset($_SESSION['user'])
-            ? $_SESSION['user']
-            : new User();
+        if (!isset($_SESSION['user'])) {
+            $this->user = new User();
+
+            $_SESSION['user'] = $this->user;
+        } else {
+            $this->user = $_SESSION['user'];
+        }
     }
 
     public function user()
@@ -26,17 +32,18 @@ class App extends BaseApp
         return $this->user;
     }
 
-    public function signIn($user)
+    public function signIn(User $user)
     {
-        
+        if (!$user) {
+            throw new InvalidArgumentException('User cannot be null.');
+        }
+
         $_SESSION['user'] = $this->user = $user;
     }
 
     public function logout()
     {
-        unset($_SESSION['user']);
-
-        $this->user = new User();
+        $this->user->logout();
     }
 }
 
