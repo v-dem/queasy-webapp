@@ -3,20 +3,27 @@
 return [
     '~/index\.php/profile/?$~'          => [
                                             'resource' => app\controller\Profile::class,
-                                            'middleware' => [ 'auth' ]
+                                            'middleware' => [ 'sessionuser', 'auth' ]
     ],
 
     '~/index\.php/sign-in/?(.*)?$~'     => [
                                             'resource' => app\controller\SignIn::class,
-                                            'middleware' => [ 'gohome' ]
+                                            'middleware' => [ 'sessionuser', 'gohome' ]
     ],
 
     '~/index\.php/sign-up$~'            => [
                                             'resource' => app\controller\SignUp::class,
-                                            'middleware' => [ 'gohome' ]
+                                            'middleware' => [ 'sessionuser', 'gohome' ]
     ],
 
-    '~/index\.php\/?$~'                 => app\controller\Home::class,
-    '~/\/?$~'                           => app\controller\Home::class
+    '~/index\.php\/?$~'                 => [
+                                            'resource' => app\controller\Home::class,
+                                            'middleware' => [ 'sessionuser' ]
+    ],
+
+    '~/\/?$~'                           => [
+                                            'resource' => app\controller\Home::class,
+                                            'middleware' => [ 'sessionuser' ]
+    ]
 ];
 

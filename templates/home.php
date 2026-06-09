@@ -4,7 +4,7 @@ function renderForm(array $__data)
 {
     extract($__data);
 ?>
-    <?php if ($user->isLoggedIn()) { ?>
+    <?php if ($user) { ?>
         <div class="card">
             <div class="card-header">
                 Welcome, <?= htmlspecialchars($user->name) ?>!

@@ -14,6 +14,10 @@ return [
         return $db;
     },
 
+    'userService' => static function($sc) {
+        return new app\service\UserService($sc->db);
+    },
+
     'logger' => static function($sc) {
         return new queasy\log\Logger(new Config(QUEASY_ROOT_PATH . 'config/logger.php'));
     },

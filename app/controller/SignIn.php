@@ -18,13 +18,13 @@ class SignIn extends Controller
     public function post()
     {
         $errors = [];
-        $user = $this->app->db->users->name[$this->post['name']];
+        $user = $this->app->userService->getByName($this->post['name']);
         if (null == $user) {
             $errors[] = 'User not found.';
         } elseif (!password_verify($this->post['password'], $user['password_hash'])) {
             $errors[] = 'Invalid password. Please try again.';
         } else {
-            $this->app->signIn(new User($user, true));
+            $this->app->signIn(new User($this->app->userService, $user['id']));
         }
 
         if (count($errors)) {

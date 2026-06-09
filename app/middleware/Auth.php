@@ -12,20 +12,23 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 class Auth implements MiddlewareInterface
 {
-    private $app;
+    private $container;
 
-    public function __construct(App $app)
+    private $config;
+
+    public function __construct($container, $config = [])
     {
-        $this->app = $app;
+        $this->container = $container;
+        $this->config = $config;
     }
 
     public function process(ServerRequestInterface $request, RequestHandlerInterface $next): ResponseInterface
     {
-        if ($this->app->user()->isLoggedIn()) {
+        if ($request->getAttribute('user')) {
             return $next->handle($request);
         }
 
-        return $this->app->http->responseFactory->createResponse()
+        return $this->container->http->responseFactory->createResponse()
             ->withHeader('Location', preg_replace('/index.php.*/', '', $request->getRequestTarget()) . 'index.php/sign-in');
     }
 }

@@ -48,7 +48,7 @@
                     </ul>
 
                     <span class="navbar-text">
-                        <?php if ($user->isLoggedIn()) { ?>
+                        <?php if ($user) { ?>
                             <a class="card-link" href="index.php/profile"><span class="bi-person-circle"></span>&nbsp;Profile</a>
                             <a class="card-link" href="index.php/?logout"><span class="bi-x-circle-fill"></span>&nbsp;Logout</a>
                         <?php } else { ?>

@@ -2,17 +2,21 @@
 
 namespace app\model;
 
+use app\service\UserService;
+
 class User
 {
-    private $data;
-    private $isLoggedIn;
-    private $isAdmin;
+    private $userService;
 
-    public function __construct(array $data = [], $isLoggedIn = false, $isAdmin = false)
+    private $data = [];
+
+    public function __construct(UserService $userService, $id = null)
     {
-        $this->data = $data;
-        $this->isLoggedIn = $isLoggedIn;
-        $this->isAdmin = $isAdmin;
+        $this->userService = $userService;
+
+        if ($id) {
+            $this->data = $this->userService->get($id);
+        }
     }
 
     public function __get($field)
@@ -20,26 +24,16 @@ class User
         return $this->data[$field] ?? null;
     }
 
-    public function __set($field, $value)
+    public function set(array $data)
     {
-        $this->data[$field] = $value;
-    }
+        $id = $this->userService->save($this->id, $data);
 
-    public function isLoggedIn()
-    {
-        return $this->isLoggedIn;
+        $this->data = array_merge($this->data, $data, [ 'id' => $id ]);
     }
 
     public function isAdmin()
     {
-        return $this->isAdmin;
-    }
-
-    public function logout()
-    {
-        $this->isAdmin = false;
-        $this->isLoggedIn = false;
-        $this->data = [];
+        return true;
     }
 }
 

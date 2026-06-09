@@ -19,7 +19,7 @@ class Controller extends BaseController
                 : null,
             [
                 'baseUrl' => preg_replace('/index\.php.*/', '', $this->request->getRequestTarget()),
-                'user' => $app->user()
+                'user' => $request->getAttribute('user')
             ]
         );
     }
