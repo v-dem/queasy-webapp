@@ -27,8 +27,6 @@ class SessionUser implements MiddlewareInterface
             $request = $request->withAttribute('user', new User($this->container->userService, $_SESSION['userKey']));
         }
 
-        $this->container->logger->debug($request->getAttribute('user'));
-
         return $next->handle($request);
     }
 }
